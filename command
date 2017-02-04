@@ -3,3 +3,6 @@ docker exec -it mongodb mongo
 
 docker run -it --name budshome -p 8888:8888 --link mongodb:mongodb -v E:/budshome:/budshome -d budshome/budshome
 docker exec -it budshome bash
+
+docker run --name postgres -e POSTGRES_PASSWORD=postgres -d postgres
+docker run -it --name budshome -p 5432:5432 --link postgres:postgres -v E:/budshome.com:/budshome.com -d budshome/budshome
