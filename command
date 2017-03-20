@@ -1,11 +1,11 @@
 docker run --name mongodb -p 27017:27017 -d mongo
 docker exec -it mongodb mongo
 
-docker run -it --name budshome -p 5555:5555 --link mongodb:mongodb -v E:/budshome:/budshome -d ouds/budshome
-docker exec -it budshome bash
+docker run -it --name bhback -p 5555:5555 --link mongodb:mongodb -v E:/budshome:/budshome -d ouds/bhback
+docker exec -it bhback bash
 
 docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
-docker run -it --name budshome -p 5555:5555 --link postgres:postgres -v E:/budshome:/budshome -d budshome/budshome
+docker run -it --name bhback -p 5555:5555 --link postgres:postgres -v E:/budshome:/budshome -d ouds/bhback
 
 docker build -t ouds/bhback E:\budshome\budshome.com-backend
 docker build -t ouds/bhfront E:\budshome\budshome.com-frontend
