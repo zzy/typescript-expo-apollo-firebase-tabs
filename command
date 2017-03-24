@@ -10,6 +10,6 @@ docker run -it --name bh-b -p 5555:5555 -v E:\budshome\budshome.com-backend:/bh-
 docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 docker run -it --name bh-b -p 5555:5555 --link postgres:postgres -v E:/budshome:/budshome -d ouds/bh-b
 
-docker build -t ouds/bh-b E:\budshome\budshome.com-backend
-docker build -t ouds/bh-f E:\budshome\budshome.com-frontend
+docker build -t ouds/bh-b E:\budshome\budshome.com-backend\extras
+docker build -t ouds/bh-f E:\budshome\budshome.com-frontend\extras
 
