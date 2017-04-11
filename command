@@ -13,5 +13,5 @@ docker run -it --name bh-b -p 5555:5555 --link postgres:postgres -v E:/budshome:
 docker build -t ouds/bh-b E:\budshome\budshome.com-backend\extras
 docker build -t ouds/bh-f E:\budshome\budshome.com-frontend\extras
 
-sudo docker run -it --name bh-f -p 80:5000 -v ~/bh-frontend:/bh-frontend -d node
-sudo docker run -it --name bhx-f -p 81:5000 -v ~/bhx-frontend:/bhx-frontend -d node
+sudo docker run -it --name bh-f -p 81:5000 -v ~/bh-frontend:/bh-frontend -d node
+sudo docker run -it --name bhx-f -p 82:5000 -v ~/bhx-frontend:/bhx-frontend -d node
