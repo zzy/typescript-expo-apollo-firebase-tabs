@@ -17,3 +17,8 @@ docker build -t ouds/bh-c E:\budshome-cms\extras
 sudo docker run -it --name bh-f -p 81:5000 -v ~/bh-frontend:/bh-frontend -d node
 sudo docker run -it --name bhx-f -p 82:5000 -v ~/bhx-frontend:/bhx-frontend -d node
 sudo docker run -it --name gd-f -p 83:5000 -v ~/gd-frontend:/gd-frontend -d node
+
+git config --list
+git config --global user.name "Ouds"
+git config --global user.email "2558256956@qq.com"
+git config --global credential.helper store
