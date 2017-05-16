@@ -1,5 +1,5 @@
-# tornado latest from github on python:slim
-# docker build -t ouds/sanic:0.1
+# tornado latest on python:slim
+# docker build -t ouds/tornado
 
 FROM python:slim
 MAINTAINER budshome.com <2558256956@qq.com>

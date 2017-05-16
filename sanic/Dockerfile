@@ -1,5 +1,5 @@
 # sanic from github on python:slim
-# docker build -t ouds/sanic:0.1
+# docker build -t ouds/sanic
 
 FROM python:slim
 MAINTAINER budshome.com <2558256956@qq.com>

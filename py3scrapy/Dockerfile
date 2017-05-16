@@ -1,4 +1,4 @@
-# scrapy latest from github on python:slim
+# scrapy latest on python:slim
 # docker build -t ouds/scrapy
 
 FROM python:slim
