@@ -1,4 +1,7 @@
-FROM python
+# scrapy latest from github on python:slim
+# docker build -t ouds/scrapy
+
+FROM python:slim
 MAINTAINER budshome.com <2558256956@qq.com>
 RUN apt -y update 
 # RUN apt install -y python3
