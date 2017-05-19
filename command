@@ -9,6 +9,7 @@ docker run -it --name bh-b -p 5555:5555 -v E:\budshome\budshome.com-backend:/bh-
 
 docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d daocloud.io/library/postgres
 docker run -it --name bh-c -p 5555:5555 --link postgres:postgres -v E:/budshome-cms:/budshome-cms -d ouds/bh-c
+docker run -it --name bh-c -p 5555:5555 -v E:/budshome-cms:/budshome-cms -d ouds/bh-c
 
 docker build -t ouds/bh-b E:\budshome.com\budshome.com-backend\extras
 docker build -t ouds/bh-f E:\budshome.com\budshome.com-frontend\extras
