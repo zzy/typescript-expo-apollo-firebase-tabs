@@ -23,3 +23,12 @@ git config --list
 git config --global user.name "Ouds"
 git config --global user.email "2558256956@qq.com"
 git config --global credential.helper store
+
+sudo docker run --detach \
+    --publish 8843:443 --publish 8880:80 --publish 8822:22 \
+    --name gitlab \
+    --restart always \
+    --volume /usr/local/gitlab/config:/etc/gitlab \
+    --volume  /usr/local/gitlab/logs:/var/log/gitlab \
+    --volume /usr/local/gitlab/data:/var/opt/gitlab \
+    gitlab/gitlab-ce
