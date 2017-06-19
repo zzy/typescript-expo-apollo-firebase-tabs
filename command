@@ -25,10 +25,11 @@ git config --global user.email "2558256956@qq.com"
 git config --global credential.helper store
 
 sudo docker run --detach \
-    --publish 8843:443 --publish 8880:80 --publish 8822:22 \
+    --hostname git.budshome.com \
+    --publish 84:80 \
     --name gitlab \
     --restart always \
-    --volume /usr/local/gitlab/config:/etc/gitlab \
-    --volume  /usr/local/gitlab/logs:/var/log/gitlab \
-    --volume /usr/local/gitlab/data:/var/opt/gitlab \
+    --volume /srv/gitlab/config:/etc/gitlab:Z \
+    --volume /srv/gitlab/logs:/var/log/gitlab:Z \
+    --volume /srv/gitlab/data:/var/opt/gitlab:Z \
     gitlab/gitlab-ce
