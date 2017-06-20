@@ -35,3 +35,9 @@ sudo docker run --detach \
     --volume /srv/gitlab/logs:/var/log/gitlab:Z \
     --volume /srv/gitlab/data:/var/opt/gitlab:Z \
     gitlab/gitlab-ce
+
+docker run -it --name gitlab -p 84:80 \ 
+        --volume E:/gitlab/config:/etc/gitlab  \ 
+        --volume E:/gitlab/logs:/var/log/gitlab \ 
+         --volume E:/gitlab/data:/var/opt/gitlab \ 
+        -d daocloud.io/library/ubuntu
