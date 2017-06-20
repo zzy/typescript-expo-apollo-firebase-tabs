@@ -1,3 +1,5 @@
+docker login -u * -p *
+
 docker run --name mongodb -p 27017:27017 -d mongo
 docker exec -it mongodb mongo
 

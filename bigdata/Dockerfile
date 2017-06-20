@@ -1,7 +1,7 @@
 # hadoop 2.8.0 on Ubuntu 16.04
-# docker build -t ouds/bigdata:0.1 .
+# docker build -t ouds/bigdata:0.1
 
-FROM daocloud.io/library/ubuntu:16.04
+FROM daocloud.io/library/ubuntu
 MAINTAINER budshome.com <zzy@budshome.com>
 
 USER root
