@@ -1,7 +1,7 @@
 # gitlab on Ubuntu 16.04
 # docker build -t ouds/gitlab:0.1
 
-FROM daocloud.io/library/ubuntu
+FROM hub.c.163.com/library/ubuntu
 MAINTAINER budshome.com <zzy@budshome.com>
 
 # Install required packages
