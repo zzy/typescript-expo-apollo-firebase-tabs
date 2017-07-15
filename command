@@ -22,6 +22,7 @@ docker build -t ouds/civ-b E:\civ-b\extras
 sudo docker run -it --name bh-f -p 81:5000 -v ~/bh-frontend:/bh-frontend -d node
 sudo docker run -it --name bhx-f -p 82:5000 -v ~/bhx-frontend:/bhx-frontend -d node
 sudo docker run -it --name gd-f -p 83:5000 -v ~/gd-frontend:/gd-frontend -d node
+sudo docker run -it --name yashayan -p 84:5555 -v ~/yashayan.com:/yashayan.com -d ouds/yashayan
 
 git config --list
 git config --global user.name "Ouds"
