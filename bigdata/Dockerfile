@@ -8,7 +8,7 @@ USER root
 
 # install dev tools
 RUN apt-get update
-RUN apt-get install -y vim openssh-server
+RUN apt-get install -y vim openssh-server inetutils-ping net-tools
 
 # java
 ADD jdk-8u112-linux-x64.tar.gz /usr/local/
@@ -36,3 +36,6 @@ ADD spark-2.2.0-bin-hadoop2.7.tgz /usr/local/
 RUN mv /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark-2.2.0
 ENV SPARK_HOME=/usr/local/spark-2.2.0
 ENV PATH=$PATH:$SPARK_HOME/bin
+
+# port
+EXPOSE 443 80 22
