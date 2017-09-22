@@ -1,4 +1,4 @@
-# hadoop 2.8.0 on Ubuntu 16.04
+# hadoop 2.8.1, spark 2.2.0 on Ubuntu 16.04
 # docker build -t ouds/bigdata:0.1
 
 FROM daocloud.io/library/ubuntu
@@ -8,7 +8,7 @@ USER root
 
 # install dev tools
 RUN apt-get update
-RUN apt-get install -y curl tar sudo openssh-server openssh-client rsync
+RUN apt-get install -y ta openssh-server
 
 # passwordless ssh
 RUN rm -f /etc/ssh/ssh_host_dsa_key /etc/ssh/ssh_host_rsa_key /root/.ssh/id_rsa
