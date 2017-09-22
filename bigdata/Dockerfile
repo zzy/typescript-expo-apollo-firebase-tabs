@@ -8,7 +8,7 @@ USER root
 
 # install dev tools
 RUN apt-get update
-RUN apt-get install -y openssh-server
+RUN apt-get install -y vim openssh-server
 
 # java
 ADD jdk-8u112-linux-x64.tar.gz /usr/local/
