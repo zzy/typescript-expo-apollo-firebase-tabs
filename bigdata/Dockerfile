@@ -9,7 +9,8 @@ RUN apt-get update
 RUN apt-get install -y vim openssh-server inetutils-ping net-tools
 
 USER root
-RUN echo "root:password" | chpasswd
+RUN mkdir /var/run/sshd
+RUN echo 'root:screencast' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # java
