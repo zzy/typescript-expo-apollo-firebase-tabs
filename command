@@ -52,5 +52,4 @@ service ssh restart
 
 sudo docker network create --subnet=192.168.252.0/24 --gateway=192.168.252.3 -o parent=ens33 bigdata
 
-
-sudo docker run -it --name bdm2 --hostname bdm2 -p 50070:50070 -p 8088:8088 -p 9000:9000 -p 9001:9001 -d  zzy/bigdata
+ sudo docker run -itdP --name bdm2 --hostname bdm2 --network bigdata --ip 192.168.252.152 zzy/bigdata
