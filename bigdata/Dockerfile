@@ -4,11 +4,13 @@
 FROM daocloud.io/library/ubuntu
 MAINTAINER budshome.com <zzy@budshome.com>
 
-USER root
-
 # install dev tools
 RUN apt-get update
 RUN apt-get install -y vim openssh-server inetutils-ping net-tools
+
+USER root
+RUN echo "root:password" | chpasswd
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # java
 ADD jdk-8u112-linux-x64.tar.gz /usr/local/
@@ -39,3 +41,4 @@ ENV PATH=$PATH:$SPARK_HOME/bin
 
 # port
 EXPOSE 22 80 443 4040 8080 8088 9000 9001 50070
+
