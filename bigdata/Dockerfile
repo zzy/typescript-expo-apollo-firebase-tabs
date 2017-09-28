@@ -48,4 +48,4 @@ ENV PATH=$PATH:$SPARK_HOME/bin
 
 # port
 EXPOSE 22 80 443 4040 8080 8088 9000 9001 50070
-CMD ["/usr/sbin/sshd", "-D"]
+#CMD ["/usr/sbin/sshd", "-D"]
