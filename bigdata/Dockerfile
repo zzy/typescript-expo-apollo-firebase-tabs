@@ -4,21 +4,6 @@
 FROM daocloud.io/library/ubuntu
 MAINTAINER budshome.com <zzy@budshome.com>
 
-# install dev tools
-RUN apt-get update
-RUN apt-get install -y vim openssh-server inetutils-ping net-tools
-
-USER root
-RUN mkdir /var/run/sshd
-RUN echo 'root:bigdata' | chpasswd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
-ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
-
 # java
 ADD jdk-8u112-linux-x64.tar.gz /usr/local/
 RUN mv /usr/local/jdk1.8.0_112 /usr/local/jdk
@@ -46,6 +31,22 @@ RUN mv /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark-2.2.0
 ENV SPARK_HOME=/usr/local/spark-2.2.0
 ENV PATH=$PATH:$SPARK_HOME/bin
 
+# install tools
+RUN apt-get update
+RUN apt-get install -y vim openssh-server inetutils-ping net-tools
+
+USER root
+RUN mkdir /var/run/sshd
+RUN echo 'root:bigdata' | chpasswd
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
+CMD ["/usr/sbin/sshd", "-D"]
+
 # port
 EXPOSE 22 80 443 4040 8080 8088 9000 9001 50070
-#CMD ["/usr/sbin/sshd", "-D"]
+
