@@ -31,6 +31,9 @@ RUN mv /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark-2.2.0
 ENV SPARK_HOME=/usr/local/spark-2.2.0
 ENV PATH=$PATH:$SPARK_HOME/bin
 
+# port
+EXPOSE 22 80 443 4040 8080 8088 9000 9001 50070
+
 # install tools
 RUN apt-get update
 RUN apt-get install -y vim openssh-server inetutils-ping net-tools
@@ -46,8 +49,5 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
+
 CMD ["/usr/sbin/sshd", "-D"]
-
-# port
-EXPOSE 22 80 443 4040 8080 8088 9000 9001 50070
-
