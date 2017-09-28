@@ -35,6 +35,7 @@ ENV PATH=$PATH:$SPARK_HOME/bin
 RUN apt-get update
 RUN apt-get install -y vim openssh-server inetutils-ping net-tools
 
+# SSH
 USER root
 RUN mkdir /var/run/sshd
 RUN echo 'root:bigdata' | chpasswd
