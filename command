@@ -50,8 +50,8 @@ sudo vi /etc/ssh/sshd_config
 PermitRootLogin yes
 service ssh restart
 
-sudo docker network create -d bridge --subnet 172.25.0.0/16 --gateway 172.25.5.1 bigdata
-sudo docker run -itdP --name bdm2 --hostname bdm2 --network=bigdata --ip=172.25.5.2 --restart always zzy/bigdata
+sudo docker network create -d=bridge --subnet=172.25.0.0/16 --gateway=172.25.5.1 bigdata
+sudo docker run -itdP --name=bdm2 --hostname=bdm2 --network=bigdata --ip=172.25.5.2 --restart=always zzy/bigdata
 
 sudo docker network create --subnet=192.168.252.0/24 --gateway=192.168.252.3 -o parent=ens33 bigdata
-sudo docker run -itdP --name bdm2 --hostname bdm2 --network bigdata --ip 192.168.252.152 zzy/bigdata
+sudo docker run -itdP --name=bdm2 --hostname=bdm2 --network=bigdata --ip=192.168.252.152 zzy/bigdata
