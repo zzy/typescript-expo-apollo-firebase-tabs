@@ -51,3 +51,4 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 CMD ["/usr/sbin/sshd", "-D"]
+
