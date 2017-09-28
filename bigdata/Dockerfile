@@ -7,29 +7,45 @@ MAINTAINER budshome.com <zzy@budshome.com>
 # java
 ADD jdk-8u112-linux-x64.tar.gz /usr/local/
 RUN mv /usr/local/jdk1.8.0_112 /usr/local/jdk
+
 ENV JAVA_HOME /usr/local/jdk
 ENV PATH $JAVA_HOME/bin:$PATH
+RUN echo 'export JAVA_HOME=/usr/local/jdk' >> /etc/profile
+RUN echo 'export PATH=$JAVA_HOME/bin:$PATH' >> /etc/profile
 
 # scala
 ADD scala-2.12.2.tgz /usr/local/
 RUN mv /usr/local/scala-2.12.2 /usr/local/scala
+
 ENV SCALA_HOME /usr/local/scala
 ENV PATH $SCALA_HOME/bin:$PATH
+RUN echo 'export SCALA_HOME=/usr/local/scala' >> /etc/profile
+RUN echo 'export PATH=$SCALA_HOME/bin:$PATH' >> /etc/profile
 
 # hadoop
 ADD hadoop-2.8.1.tar.gz /usr/local/
+
 ENV HADOOP_HOME /usr/local/hadoop-2.8.1
 ENV HADOOP_MAPRED_HOME $HADOOP_HOME
 ENV HADOOP_COMMON_HOME $HADOOP_HOME
 ENV HADOOP_HDFS_HOME $HADOOP_HOME
 ENV YARN_HOME $HADOOP_HOME
 ENV HADOOP_OPTS "-Djava.library.path=$HADOOP_HOME/lib"
+RUN echo 'export HADOOP_HOME=/usr/local/hadoop-2.8.1' >> /etc/profile
+RUN echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> /etc/profile
+RUN echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> /etc/profile
+RUN echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> /etc/profile
+RUN echo 'export YARN_HOME=$HADOOP_HOME' >> /etc/profile
+RUN echo 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"' >> /etc/profile
 
 # spark
 ADD spark-2.2.0-bin-hadoop2.7.tgz /usr/local/
 RUN mv /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark-2.2.0
-ENV SPARK_HOME=/usr/local/spark-2.2.0
-ENV PATH=$PATH:$SPARK_HOME/bin
+
+ENV SPARK_HOME /usr/local/spark-2.2.0
+ENV PATH $PATH:$SPARK_HOME/bin
+RUN echo 'export SPARK_HOME=/usr/local/spark-2.2.0' >> /etc/profile
+RUN echo 'export PATH=$PATH:$SPARK_HOME/bin' >> /etc/profile
 
 # port
 EXPOSE 22 80 443 4040 8080 8088 9000 9001 50070
@@ -48,7 +64,7 @@ RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/s
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
+RUN echo 'export VISIBLE=now' >> /etc/profile
 
 CMD ["/usr/sbin/sshd", "-D"]
 
