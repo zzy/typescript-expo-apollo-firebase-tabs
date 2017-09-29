@@ -68,6 +68,3 @@ RUN echo 'export VISIBLE=now' >> /etc/profile
 
 CMD ["/usr/sbin/sshd", "-D"]
 
-ADD start.sh start.sh
-ENTRYPOINT ["sh ./start.sh"] 
-
