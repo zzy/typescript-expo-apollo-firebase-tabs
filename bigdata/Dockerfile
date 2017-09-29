@@ -66,7 +66,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo 'export VISIBLE=now' >> /etc/profile
 
-ADD start.sh /root/start.sh
 CMD ["/usr/sbin/sshd", "-D"]
-ENTRYPOINT ["/root/start.sh"] 
+
+ADD start.sh start.sh
+ENTRYPOINT ["sh ./start.sh"] 
 
