@@ -51,8 +51,12 @@ PermitRootLogin yes
 service ssh restart
 
 sudo docker network create -d bridge --subnet=172.25.0.0/16 --gateway=172.25.5.1 bigdata
-sudo docker run -itdP --name=bdm --hostname=bdm --network=bigdata --ip=172.25.5.2 --restart=always zzy/bigdatam
 
-sudo docker network create --subnet=192.168.252.0/24 --gateway=192.168.252.3 -o parent=ens33 bigdata
-sudo docker run -itdP --name=bdm2 --hostname=bdm2 --network=bigdata --ip=192.168.252.152 zzy/bigdata
+sudo docker run -itd --name=bdm --hostname=bdm --network=bigdata --ip=172.25.5.2 -p 30022:22 -p 50070:50070 -p 38080-38081:8080-8081 -p 38088:8088 -p 34040-34060:4040-4060 -p 39000-39001:9000-9001 --restart=always zzy/bdm
+sudo docker run -itd --name=bds1 --hostname=bds1 --network=bigdata --ip=172.25.5.3 -p 30122:22 --restart=always zzy/bds1
+
+sudo docker inspect bds6|grep IPAddress
+
+sudo docker commit bdm zzy/bdm
+sudo docker commit bds1 zzy/bds1
 
