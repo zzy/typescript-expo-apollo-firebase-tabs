@@ -30,21 +30,15 @@ git config --global user.email "2558256956@qq.com"
 git config --global credential.helper store
 
 sudo docker run --detach \
-    --hostname git.budshome.com \
-    --publish 84:80 \
+    --hostname gitlab.budshome.com \
+     --network=bigdata --ip=172.25.5.10 \
+    --publish 39443:443 --publish 39080:80 --publish 39022:22 \
     --name gitlab \
     --restart always \
-    --volume /srv/gitlab/config:/etc/gitlab:Z \
-    --volume /srv/gitlab/logs:/var/log/gitlab:Z \
-    --volume /srv/gitlab/data:/var/opt/gitlab:Z \
+    --volume /home/bigdata/dataset/gitlab/config:/etc/gitlab \
+    --volume /home/bigdata/dataset/gitlab/logs:/var/log/gitlab \
+    --volume /home/bigdata/dataset/gitlab/data:/var/opt/gitlab \
     gitlab/gitlab-ce
-
-docker run -it --name gitlab -p 84:80 \ 
-        --volume E:/gitlab/config:/etc/gitlab  \ 
-        --volume E:/gitlab/logs:/var/log/gitlab \ 
-         --volume E:/gitlab/data:/var/opt/gitlab \ 
-        -d daocloud.io/library/ubuntu
-
 
 sudo vi /etc/ssh/sshd_config
 PermitRootLogin yes
