@@ -30,10 +30,10 @@ git config --global user.email "2558256956@qq.com"
 git config --global credential.helper store
 
 sudo docker run --detach \
-    --hostname gitlab.budshome.com \
+    --hostname git \
      --network=bigdata --ip=172.25.5.10 \
     --publish 39443:443 --publish 39080:80 --publish 39022:22 \
-    --name gitlab \
+    --name git \
     --restart always \
     --volume /home/bigdata/dataset/gitlab/config:/etc/gitlab \
     --volume /home/bigdata/dataset/gitlab/logs:/var/log/gitlab \
