@@ -1,4 +1,4 @@
-FROM daocloud.io/library/ubuntu
+FROM daocloud.io/library/ubuntu:18.04
 
 MAINTAINER budshome.com <zzy@budshome.com>
 
@@ -10,15 +10,16 @@ ENV PATH /usr/local/bin:$PATH
 ENV LANG C.UTF-8
 
 # runtime dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt update && apt install -y --no-install-recommends \
 		ca-certificates \
 		libgdbm3 \
 		libsqlite3-0 \
 		libssl1.0.0 \
+        git \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
-ENV PYTHON_VERSION 3.6.1
+ENV PYTHON_VERSION 3.6.5
 
 RUN set -ex \
 	&& buildDeps=' \
@@ -39,7 +40,7 @@ RUN set -ex \
 		xz-utils \
 		zlib1g-dev \
 	' \
-	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
+	&& apt update && apt install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
 	\
 	&& wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
 	&& wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc" \
@@ -62,7 +63,7 @@ RUN set -ex \
 	&& make install \
 	&& ldconfig \
 	\
-	&& apt-get purge -y --auto-remove $buildDeps \
+	&& apt purge -y --auto-remove $buildDeps \
 	\
 	&& find /usr/local -depth \
 		\( \
@@ -80,17 +81,17 @@ RUN cd /usr/local/bin \
 	&& ln -s python3-config python-config
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION 9.0.1
+ENV PYTHON_PIP_VERSION 10.0.1
 
 RUN set -ex; \
 	\
-	apt-get update; \
-	apt-get install -y --no-install-recommends wget; \
+	apt update; \
+	apt install -y --no-install-recommends wget; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
 	wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py'; \
 	\
-	apt-get purge -y --auto-remove wget; \
+	apt purge -y --auto-remove wget; \
 	\
 	python get-pip.py \
 		--disable-pip-version-check \
@@ -110,5 +111,5 @@ RUN set -ex; \
 RUN apt -y update 
 # RUN apt install -y python3
 # RUN apt install -y python3-pip
-RUN pip install -U pip wheel setuptools
-RUN pip install git+https://github.com/channelcat/sanic
+RUN pip3 install -U pip wheel setuptools
+RUN pip3 install sanic
