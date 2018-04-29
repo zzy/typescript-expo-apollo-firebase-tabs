@@ -54,6 +54,8 @@ sudo docker inspect bds6|grep IPAddress
 sudo docker commit bdm zzy/bdm
 sudo docker commit bds1 zzy/bds1
 
- sudo docker run -itd --name=mongodb --hostname=mongodb --network=bigdata --ip=172.25.5.9 -p 27017:27017 -v /home/bigdata/dataset/mongo:/data/db  --restart=always daocloud.io/library/mongo
+sudo docker run -itd --name=mongodb --hostname=mongodb --network=bigdata --ip=172.25.5.9 -p 27017:27017 -v /home/bigdata/dataset/mongo:/data/db  --restart=always daocloud.io/library/mongo
 
- 
+docker run --name mongodb -p 27017:27017 -d mongo
+docker run -it --name budshome.org -p 5555:5555 -v E:\budshome.org:/budshome.org --link mongodb:mongo -d budshome
+
