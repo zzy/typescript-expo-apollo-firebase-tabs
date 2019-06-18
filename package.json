@@ -1,0 +1,85 @@
+{
+  "name": "typescript-expo-apollo-firebase-tabs",
+  "description": "typescript-expo-apollo-firebase-tabs",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
+    "tsc-test": "tsc --project . --noEmit",
+    "eslint": "eslint --ext .ts,.tsx .",
+    "jest": "jest",
+    "test": "npm run tsc-test && npm run eslint && npm run jest",
+    "eject": "expo eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zzy/typescript-expo-apollo-firebase-tabs.git"
+  },
+  "author": "zzy",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.6.0",
+    "apollo-client": "^2.6.0",
+    "apollo-link-rest": "^0.7.3",
+    "apollo-link-schema": "^1.2.2",
+    "expo": "^32.0.6",
+    "graphql-anywhere": "^4.2.2",
+    "graphql-tag": "^2.10.1",
+    "react": "16.5.0",
+    "react-apollo": "^2.5.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.2.tar.gz",
+    "react-native-firebase": "^5.3.1",
+    "react-native-paper": "^2.15.0",
+    "react-navigation": "3.6.0",
+    "react-navigation-material-bottom-tabs": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/expo": "^32.0.13",
+    "@types/expo__vector-icons": "^9.0.1",
+    "@types/graphql": "^14.2.0",
+    "@types/jest": "^24.0.12",
+    "@types/react": "^16.8.16",
+    "@types/react-native": "^0.57.51",
+    "@types/react-navigation": "^3.0.6",
+    "@types/react-navigation-material-bottom-tabs": "^0.3.1",
+    "@types/react-test-renderer": "^16.8.1",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "expo-cli": "^2.16.1",
+    "jest": "^24.8.0",
+    "jest-expo": "^32.0.0",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.ts?(x)",
+      "**/?(*.)+(spec|test).ts?(x)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": {
+          "jsx": "react"
+        }
+      }
+    }
+  }
+}

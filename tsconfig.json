@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": [
+      "es2017",
+      "esnext.asynciterable"
+    ],
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "strict": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "jest"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "expo": [
+        "node_modules/@types/expo",
+        "node_modules/expo"
+      ]
+    }
+  }
+}
